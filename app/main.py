@@ -33,4 +33,4 @@ app.include_router(vote.router)
 
 @app.get('/')
 def root():
-    return {'message': 'you just got scammed'}
+    return {'message': 'I love Bulochka ❤️‍🔥💘'}
