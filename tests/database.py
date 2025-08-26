@@ -29,8 +29,10 @@ testing_session_local = sessionmaker(
 # client = TestClient(app)
 
 # with the session fixture we have access to our database object so we could manipulate with database data
-@pytest.fixture(scope="function")
+@pytest.fixture()
 def session():
+    print("my session fixture ran")
+
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
     db = testing_session_local()
@@ -41,7 +43,7 @@ def session():
         db.close()
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture()
 def client(session):
     # return TestClient(app)
     def override_get_db():
